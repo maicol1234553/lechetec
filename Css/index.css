@@ -1,56 +1,112 @@
-body{
-margin:0;
-font-family: Arial;
-text-align:center;
+/* 1. Configuración de Pantalla */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    text-align: center;
+    background-color: #1a1a1a; /* Fondo oscuro para que el diseño resalte */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.principal{
-margin-top:50px;
-margin-bottom:50px;
-background: rgba(80, 32, 32, 0.6);
-padding:0px 10px;
-border-radius:30px;
-width:fit-content;
-margin-left:auto;
-margin-right:auto;
+/* 2. Contenedor Principal (Efecto Glassmorphism Profundo) */
+.principal {
+    background: rgba(80, 32, 32, 0.4); /* Fondo borgoña semi-transparente */
+    backdrop-filter: blur(12px);      /* Efecto de desenfoque de cristal */
+    -webkit-backdrop-filter: blur(12px);
+    padding: 50px 40px;
+    border-radius: 40px;
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde fino para brillo */
+    /* Sombra profesional con profundidad */
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
-.logo{
-width:520px;
-filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.6));
+/* 3. Logo con Sombra de Elevación */
+.logo {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin-bottom: 20px;
+    /* La sombra hace que el logo parezca flotar sobre el cristal */
+    filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.7));
+    transition: transform 0.5s ease;
 }
 
-h2{
-color:white;
-font-size:28px;
+.logo:hover {
+    transform: translateY(-5px); /* Movimiento sutil al pasar el mouse */
 }
 
-p{
-width:500px;
-margin:auto;
-color:white;
+/* 4. Tipografía con Espaciado Profesional */
+h2 {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 300;           /* Grosor ligero para look moderno */
+    text-transform: uppercase;  /* Mayúsculas elegantes */
+    letter-spacing: 6px;        /* Separación de letras pedida */
+    margin: 20px 0 10px 0;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Dancing Script', cursive;
 }
 
-.universidad{
-margin-top:5px;
-font-weight:bold;
+p {
+    max-width: 400px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 5.5;
 }
 
-/* Esto asegura que el enlace se vea como un botón siempre */
-.boton{
+.universidad {
+    margin-top: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;        /* Separación sutil para el texto secundario */
+    color: #f0f0f0;
+    font-size: 14px;
+}
+
+/* 5. El Botón (Acabado Premium) */
+.boton {
     display: inline-block;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    padding: 12px 25px;
-    font-size: 19px;
-    background: #6b1f1f;
-    border-radius: 5px;
-    transition: 0.3s;
+    margin-top: 40px;
+    padding: 16px 45px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+    background: #5c1b1b;        /* Tu borgoña original */
+    border-radius: 50px;        /* Estilo píldora moderno */
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Sombra de botón que genera volumen */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-link:hover {
+    background: #802525;  /* color más claro al pasar el mouse */
+    color: #ffffff;
 }
 
-/* Efecto al pasar el mouse */
-.boton:hover {
-    color: #c99a2e;
-    transform: scale(1.1);
-    background: #802525; /* Un rojo un poco más claro para que se note el clic */
+.boton:active {
+    transform: translateY(-2px);
+}
+
+.boton-link {
+    display: inline-block;
+    background-color: #5c1b1b; /* Tu color borgoña */
+    color: white;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    border: none;
+    font-family: 'Dancing Script', cursive;
 }

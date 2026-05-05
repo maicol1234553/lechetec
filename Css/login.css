@@ -1,0 +1,75 @@
+/* 1. Contenedor del Formulario */
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Aumentamos un poco el aire entre elementos */
+    margin-top: 30px;
+    align-items: center; /* Centra los inputs si el contenedor es más ancho */
+}
+
+/* 2. Estilización de los Campos de Entrada (Inputs) */
+.input {
+    width: 100%;
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.07); /* Más sutil */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 20px;
+    border-radius: 12px; /* Bordes un poco más suaves */
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más fluida */
+    box-sizing: border-box;
+}
+
+/* Efecto al escribir */
+.input:focus {
+    border-color: #c99a2e; /* Tu dorado de "La Esencia de Roque" */
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(201, 154, 46, 0.2); /* Brillo dorado suave */
+    transform: translateY(-2px); /* Pequeña elevación */
+}
+
+/* Estilo para el texto de ayuda (placeholder) */
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+}
+
+/* 3. Títulos y Textos (Aplicando letter-spacing profesional) */
+h2 {
+    letter-spacing: 6px; /* Este es el toque clave de la imagen image_1e937b.png */
+    text-transform: uppercase;
+    font-weight: 300; /* Letra más delgada = más elegante */
+    margin-bottom: 8px;
+}
+
+.universidad {
+    letter-spacing: 2px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+}
+
+/* 4. Mensaje de Error Refinado */
+.error-mensaje{
+    background: rgba(255, 77, 77, 0.15); /* Rojo translúcido */
+    border-left: 4px solid #ff4d4d;
+    color: #ffb3b3;
+    padding: 12px 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: shake 0.5s ease; /* Efecto de vibración si hay error */
+}
+
+/* Animación de vibración para el error */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}

@@ -1,40 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Data - Laboratorio de Leche</title>
     <link rel="stylesheet" href="../Css/estilos.css" />
     <link rel="stylesheet" href="../Css/index.css" />
 </head>
 
 <body>
-    <header>
-        <div class="menu-container">
-            <div class="menu" onclick="toggleMenu()">&#9776;</div>
-            <div class="dropdown" id="menuDropdown">
-                <a href="index.html">¿que es AgroData?</a>
-                <a href="menu.html">que se registra</a>
-                
-            </div>
-        </div>
-    </header>
+    
 
-    <section class="principal">
-        <img src="../Img/Logo_Fond_Trans-removebg-preview.png" class="logo" />
+    <main class="principal"> <!-- Usar main es más semántico que section -->
+        <img src="../Img/Logo_Fond_Trans-removebg-preview.png" class="logo" alt="Logo AgroData" />
         <h2>Laboratorio de análisis</h2>
         <p class="universidad">Instituto Tecnológico de Roque</p>
         
-        <button class="boton">
-            <a href="../Php/login.php" style="color: white; text-decoration: none !important;">
-                Entrar al sistema
-            </a>
-        </button>
-    </section>
+        <a href="../Php/login.php" class="boton-link">
+            Entrar al sistema
+        </a>
+    </main>
 
-    <script>
-        function toggleMenu(){
-            document.getElementById("menuDropdown").classList.toggle("activo");
-        }
-    </script>
+   
 </body>
 </html>

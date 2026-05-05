@@ -1,0 +1,198 @@
+/* RESET */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f0f0f;
+    color: white;
+}
+
+/* 🔹 IMAGEN FIJA (≈40% pantalla) */
+.lado-imagen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 45%;          /* 👈 más ancha */
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.lado-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+/* degradado suave hacia el contenido */
+.lado-imagen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, #0f0f0f);
+}
+
+/* 🔹 CONTENIDO DERECHO */
+.contenido {
+    margin-left: 40%;   /* 👈 mismo valor que la imagen */
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    z-index: 10;
+}
+
+/* 🔹 HEADER */
+.menu-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    position: relative;
+    z-index: 1000;
+}
+
+/* ICONO MENÚ */
+.menu {
+    font-size: 26px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.08);
+    padding: 8px 18px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu:hover {
+    background: rgba(255,255,255,0.15);
+    transform: scale(1.1);
+}
+
+/* 🔥 DROPDOWN */
+.dropdown {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    z-index: 2000;
+
+    background: rgba(20,20,20,0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 15px;
+    width: 280px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* CONTENIDO DEL MENÚ */
+.menu-section {
+    margin-bottom: 15px;
+}
+
+.menu-section h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: #ffb3b3;
+}
+
+.menu-section p {
+    margin: 0;
+    font-size: 13px;
+    color: #ccc;
+}
+
+/* 🔹 CONTENIDO CENTRAL */
+.principal {
+    flex: 1;   /* 👈 esto lo empuja */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TARJETA */
+.card {
+    background: rgba(255, 255, 255, 0.06); /* 👈 transparencia */
+    backdrop-filter: blur(15px);           /* 👈 efecto vidrio */
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.1); /* borde suave */
+
+    padding: 40px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+
+    box-shadow: 
+        0 10px 40px rgba(0,0,0,0.6),
+        inset 0 0 10px rgba(255,255,255,0.05);
+}
+
+/* LOGO */
+.logo {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+/* TEXTO */
+h2 {
+    font-weight: 300;
+    letter-spacing: 4px;
+}
+
+.universidad {
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+/* BOTONES */
+.opciones-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.boton-panel {
+    background: linear-gradient(135deg, #5c1b1b, #802525);
+    padding: 14px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.boton-panel:hover {
+    transform: translateY(-3px);
+}
+
+
+
+/* 🔹 RESPONSIVE */
+@media (max-width: 768px) {
+    .lado-imagen {
+        display: none;
+    }
+
+    .contenido {
+    margin-left: 40%;
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* 👈 importante */
+}
+}
