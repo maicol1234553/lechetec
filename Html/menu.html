@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Agro Data - Sistema</title>
+<link rel="stylesheet" href="../Css/estilos.css">
+<link rel="stylesheet" href="../Css/menu.css">
+</head>
+
+<body class="fondo">
+
+<header>
+  <div class="menu-container">
+    
+    <div class="menu" onclick="toggleMenu()">&#9776;</div>
+
+    <div class="dropdown" id="menuDropdown">
+    <a href="index.html">Inicio</a>
+    <a href="menu.html">Módulos</a>
+    <a href="lechetec.html">Registro Leche</a>
+    <a href="reportes.html">Reportes e Informes</a>
+</div>
+
+  </div>
+</header>
+
+<section class="modulos">
+
+<h1>Módulos del sistema</h1>
+
+<div class="contenedor-modulos">
+
+<a href="lechetec.html" class="modulo leche">
+<h1>🐄</h1>
+<h2>Leche</h2>
+<p>Análisis de calidad</p>
+</a>
+
+</div>
+
+</section>
+<script>
+function toggleMenu(){
+  document.getElementById("menuDropdown").classList.toggle("activo");
+}
+</script>
+</body>
+</html>

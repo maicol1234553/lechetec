@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de muestra de leche</title>
+    <link rel="stylesheet" href="../Css/estilos.css">
+    <link rel="stylesheet" href="../Css/lechetec.css">
+</head>
+
+<body>
+
+<header>
+  <div class="menu-container">
+    <div class="menu" onclick="toggleMenu()">&#9776;</div>
+    <div class="dropdown" id="menuDropdown">
+    <a href="index.html">Inicio</a>
+    <a href="menu.html">Módulos</a>
+    <a href="lechetec.html">Registro Leche</a>
+    <a href="reportes.html">Reportes e Informes</a>
+</div>
+  </div>
+</header>
+
+<section class="contenedor-leche">
+
+    <h1 class="titulo-leche">Registro de muestra de leche</h1>
+
+    <form class="grid-leche" action="../Php/guardar_leche.php" method="POST">
+
+        <div class="card">
+            <h3>Datos generales</h3>
+            <label>Origen</label>
+            <input type="text" name="origen" required>
+
+            <label>Responsable</label>
+            <input type="text" name="responsable" required>
+
+            <label>Cantidad de leche</label>
+            <input type="number" name="cantidad">
+        </div>
+
+        <div class="card">
+    <h3>Análisis fisicoquímico</h3>
+    <div class="grid-analisis">
+        <div>
+            <label>Acidez</label>
+            <input type="number" step="0.01" name="acidez" required>
+
+            <label>Alcohol</label>
+            <input type="number" step="0.01" name="alcohol" required>
+
+            <label>Proteína</label>
+            <input type="number" step="0.01" name="proteina" required>
+        </div>
+
+        <div>
+            <label>Densidad</label>
+            <input type="number" step="0.01" name="densidad" required>
+
+            <label>Grasa</label>
+            <input type="number" step="0.01" name="grasa" required>
+
+            <label>pH</label>
+            <input type="number" step="0.01" name="ph" required>
+        </div>
+    </div>
+
+    <label>Fosfatasa</label>
+    <input type="text" name="fosfatasa" required>
+</div>
+           
+
+        <div class="card">
+            <h3>Análisis microbiológico</h3>
+            <div class="micro">
+                <label>Coliformes</label>
+                <input type="checkbox" name="coliformes" value="1">
+
+                <label>Mesófilos aerobios</label>
+                <input type="checkbox" name="mesofilos" value="1">
+
+                <label>Salmonella</label>
+                <input type="checkbox" name="salmonella" value="1">
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Observaciones</h3>
+            <textarea name="observaciones"></textarea>
+        </div>
+
+        <button type="submit" class="btn-registro">Registrar muestra</button>
+
+    </form>
+
+    
+
+<script>
+function toggleMenu(){
+  document.getElementById("menuDropdown").classList.toggle("activo");
+}
+</script>
+
+</body>
+</html>

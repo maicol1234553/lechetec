@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Reportes - LecheTec</title>
+    <link rel="stylesheet" href="../Css/estilos.css">
+    <link rel="stylesheet" href="../Css/lechetec.css">
+</head>
+<body>
+
+<header>
+  <div class="menu-container">
+    <div class="menu" onclick="toggleMenu()">&#9776;</div>
+    <div class="dropdown" id="menuDropdown">
+      <a href="index.html">Inicio</a>
+      <a href="menu.html">Módulos</a>
+      <a href="lechetec.html">Registro Leche</a>
+      <a href="reportes.html">Reportes e Informes</a>
+    </div>
+  </div>
+</header>
+
+<section class="contenedor-leche">
+    <h1 class="titulo-leche">Panel de Consultas e Informes</h1>
+
+    <div class="grid-reportes" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+        
+        <div class="card" style="flex: 1; min-width: 300px; max-width: 450px;">
+            <h3>Consulta por Día</h3>
+            <form action="../Php/generar_reporte.php" method="POST">
+                <label>Seleccionar Fecha:</label>
+                <input type="date" name="fecha_inicio" required style="width: 100%; margin-bottom: 20px; padding: 10px;">
+                <input type="hidden" name="tipo_filtro" value="dia">
+                
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" name="accion" value="ver" class="btn-registro" style="flex: 1; margin: 0;">Ver Web</button>
+                    <button type="submit" name="accion" value="excel" class="btn-registro" style="flex: 1; margin: 0; background: #1d6f42;">Excel</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card" style="flex: 1; min-width: 300px; max-width: 450px;">
+            <h3>Consulta por Período</h3>
+            <form action="../Php/generar_reporte.php" method="POST">
+                <label>Desde:</label>
+                <input type="date" name="fecha_inicio" required style="width: 100%; margin-bottom: 10px; padding: 10px;">
+                
+                <label>Hasta:</label>
+                <input type="date" name="fecha_fin" required style="width: 100%; margin-bottom: 20px; padding: 10px;">
+                
+                <input type="hidden" name="tipo_filtro" value="rango">
+                
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" name="accion" value="ver" class="btn-registro" style="flex: 1; margin: 0;">Ver Período</button>
+                    <button type="submit" name="accion" value="excel" class="btn-registro" style="flex: 1; margin: 0; background: #1d6f42;">Excel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="lechetec.html" class="btn-registro" style="text-decoration: none; color: white; display: inline-block; padding: 10px 25px;">
+            ← Volver al Registro de Muestras
+        </a>
+    </div>
+</section>
+
+<script>
+function toggleMenu(){
+  document.getElementById("menuDropdown").classList.toggle("activo");
+}
+</script>
+
+</body>
+</html>

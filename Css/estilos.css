@@ -1,0 +1,72 @@
+body{
+margin:0;
+font-family: Arial;
+background-image: url("../Img/Imagen_Principal.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+/* HEADER GLOBAL */
+header{    
+height:60px;
+background:#6b1f1f;
+color:white;
+box-shadow: 0px 4px 20px rgba(192, 26, 26, 0.4);
+}
+
+/* MENU ICONO */
+.menu{
+font-size:30px;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.menu:hover{
+color:#c99a2e;
+transform:scale(1.2);
+}
+
+/* CONTENEDOR MENU */
+.menu-container{
+position:relative;
+float:right;
+margin:10px 30px;
+}
+
+/* DROPDOWN */
+.dropdown{
+position:absolute;
+top:100%;
+right:0;
+background:#6b1f1f;
+border-radius:8px;
+min-width:280px;
+display:none;
+box-shadow:10px 8px 20px rgba(0,0,0,0.3);
+padding:5px 0;
+}
+
+.dropdown a{
+display:flex;
+padding:12px 20px;
+color:white;
+text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,0.1);
+transition:0.3s;
+}
+
+.dropdown a:last-child{
+border-bottom:none;
+}
+
+.dropdown a:hover{
+background:#c99a2e;
+color:#6b1f1f;
+}
+
+.dropdown.activo{
+display:block;
+}
