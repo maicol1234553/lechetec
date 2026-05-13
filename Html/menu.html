@@ -1,48 +1,134 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <title>Agro Data - Sistema</title>
+
 <link rel="stylesheet" href="../Css/estilos.css">
 <link rel="stylesheet" href="../Css/menu.css">
+
 </head>
 
 <body class="fondo">
 
 <header>
-  <div class="menu-container">
-    
-    <div class="menu" onclick="toggleMenu()">&#9776;</div>
 
-    <div class="dropdown" id="menuDropdown">
-    <a href="index.html">Inicio</a>
-    <a href="menu.html">Módulos</a>
-    <a href="lechetec.html">Registro Leche</a>
-    <a href="reportes.html">Reportes e Informes</a>
+<div class="menu-container">
+
+<div class="menu" onclick="toggleMenu()">&#9776;</div>
+
+<div class="dropdown" id="menuDropdown">
+<a href="index.html">Inicio</a>
+<a href="menu.html">Módulos</a>
+<a href="lechetec.html">Registro Leche</a>
+<a href="reportes.html">Reportes e Informes</a>
 </div>
 
-  </div>
+</div>
+
 </header>
 
 <section class="modulos">
+
 
 <h1>Módulos del sistema</h1>
 
 <div class="contenedor-modulos">
 
 <a href="lechetec.html" class="modulo leche">
+
 <h1>🐄</h1>
+
 <h2>Leche</h2>
+
 <p>Análisis de calidad</p>
+
+</a>
+
+<a href="queso.html" class="modulo quesos">
+
+<h1>🧀</h1>
+
+<h2>Queso</h2>
+
+<p>Análisis de calidad</p>
+
+</a>
+
+<a href="frutas.html" class="modulo frutas">
+
+<h1>🍓</h1>
+
+<h2>Frutas</h2>
+
+<p>Análisis de calidad</p>
+
+</a>
+
+<a href="verduras.html" class="modulo verduras">
+
+<h1>🥛</h1>
+
+<h2>verduras</h2>
+
+<p>Análisis de calidad</p>
+
 </a>
 
 </div>
 
 </section>
+<!-- SECCION INFORMACION -->
+
+<section class="informacion">
+
+<div class="info-card">
+<h3>🔒 Información Segura</h3>
+<p>
+Protegemos todos los registros y análisis realizados dentro del sistema.
+</p>
+</div>
+
+<div class="info-card">
+<h3>📊 Reportes Precisos</h3>
+<p>
+Generación de reportes e informes detallados para el control de calidad.
+</p>
+</div>
+
+<div class="info-card">
+<h3>⚡ Procesamiento Rápido</h3>
+<p>
+El sistema permite registrar y consultar información de manera eficiente.
+</p>
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Agro Data - Todos los derechos reservados
+</p>
+
+</footer>
+
 <script>
+
 function toggleMenu(){
-  document.getElementById("menuDropdown").classList.toggle("activo");
+
+document.getElementById("menuDropdown").classList.toggle("activo");
+
 }
+
 </script>
+
 </body>
+
 </html>
