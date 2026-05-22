@@ -1,105 +1,340 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Registro de muestra de leche</title>
+
+    <title>
+        Registro de muestra de leche
+    </title>
+
     <link rel="stylesheet" href="../Css/estilos.css">
+
     <link rel="stylesheet" href="../Css/lechetec.css">
+
 </head>
 
 <body>
 
 <header>
-  <div class="menu-container">
-    <div class="menu" onclick="toggleMenu()">&#9776;</div>
-    <div class="dropdown" id="menuDropdown">
-    <a href="index.html">Inicio</a>
-    <a href="menu.html">Módulos</a>
-    <a href="lechetec.html">Registro Leche</a>
-    <a href="reportes.html">Reportes e Informes</a>
-</div>
-  </div>
+
+    <div class="menu-container">
+
+        <div class="menu" onclick="toggleMenu()">
+            &#9776;
+        </div>
+
+        <div class="dropdown" id="menuDropdown">
+
+            <a href="menu.html">
+                Módulos
+            </a>
+
+            <a href="lechetec.html">
+                Registro Leche
+            </a>
+
+            <a href="reportes.html">
+                Reportes e Informes
+            </a>
+
+            <a href="index.html">
+                Salir
+            </a>
+
+        </div>
+
+    </div>
+
 </header>
 
 <section class="contenedor-leche">
 
-    <h1 class="titulo-leche">Registro de muestra de leche</h1>
+    <h1 class="titulo-leche">
+        Registro de muestra de leche
+    </h1>
 
-    <form class="grid-leche" action="../Php/guardar_leche.php" method="POST">
+    <form class="grid-leche"
+          action="../Php/guardar_leche.php"
+          method="POST">
 
-        <div class="card">
-            <h3>Datos generales</h3>
-            <label>Origen</label>
-            <input type="text" name="origen" required>
-
-            <label>Responsable</label>
-            <input type="text" name="responsable" required>
-
-            <label>Cantidad de leche</label>
-            <input type="number" name="cantidad">
-        </div>
+        <!-- DATOS GENERALES -->
 
         <div class="card">
-    <h3>Análisis fisicoquímico</h3>
-    <div class="grid-analisis">
-        <div>
-            <label>Acidez</label>
-            <input type="number" step="0.01" name="acidez" required>
 
-            <label>Alcohol</label>
-            <input type="number" step="0.01" name="alcohol" required>
+            <h3>
+                Datos generales
+            </h3>
 
-            <label>Proteína</label>
-            <input type="number" step="0.01" name="proteina" required>
+            <label for="origen">
+                Origen
+            </label>
+
+            <input
+                type="text"
+                id="origen"
+                name="origen"
+                value="Instituto Tecnológico de Roque"
+                required
+            >
+
+            <label for="responsable">
+                Responsable
+            </label>
+
+            <input
+                type="text"
+                id="responsable"
+                name="responsable"
+                placeholder="Nombre del encargado"
+                required
+            >
+
+            <label for="cantidad">
+                Cantidad de leche (L)
+            </label>
+
+            <input
+                type="number"
+                id="cantidad"
+                name="cantidad"
+                min="0"
+                step="0.1"
+                placeholder="Ej: 50"
+                required
+            >
+
         </div>
 
-        <div>
-            <label>Densidad</label>
-            <input type="number" step="0.01" name="densidad" required>
-
-            <label>Grasa</label>
-            <input type="number" step="0.01" name="grasa" required>
-
-            <label>pH</label>
-            <input type="number" step="0.01" name="ph" required>
-        </div>
-    </div>
-
-    <label>Fosfatasa</label>
-    <input type="text" name="fosfatasa" required>
-</div>
-           
+        <!-- ANALISIS FISICOQUIMICO -->
 
         <div class="card">
-            <h3>Análisis microbiológico</h3>
-            <div class="micro">
-                <label>Coliformes</label>
-                <input type="checkbox" name="coliformes" value="1">
 
-                <label>Mesófilos aerobios</label>
-                <input type="checkbox" name="mesofilos" value="1">
+            <h3>
+                Análisis fisicoquímico
+            </h3>
 
-                <label>Salmonella</label>
-                <input type="checkbox" name="salmonella" value="1">
+            <div class="grid-analisis">
+
+                <div>
+
+                    <label for="acidez">
+                        Acidez (°D)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="acidez"
+                        name="acidez"
+                        min="0"
+                        max="30"
+                        step="0.01"
+                        placeholder="Ej: 15"
+                        required
+                    >
+
+                    <label for="alcohol">
+                        Alcohol (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="alcohol"
+                        name="alcohol"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                        placeholder="Ej: 0"
+                        required
+                    >
+
+                    <label for="proteina">
+                        Proteína (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="proteina"
+                        name="proteina"
+                        min="0"
+                        max="10"
+                        step="0.01"
+                        placeholder="Ej: 3.2"
+                        required
+                    >
+
+                </div>
+
+                <div>
+
+                    <label for="densidad">
+                        Densidad (g/mL)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="densidad"
+                        name="densidad"
+                        min="1"
+                        max="2"
+                        step="0.001"
+                        placeholder="Ej: 1.032"
+                        required
+                    >
+
+                    <label for="grasa">
+                        Grasa (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="grasa"
+                        name="grasa"
+                        min="0"
+                        max="10"
+                        step="0.01"
+                        placeholder="Ej: 3.5"
+                        required
+                    >
+
+                    <label for="ph">
+                        pH
+                    </label>
+
+                    <input
+                        type="number"
+                        id="ph"
+                        name="ph"
+                        min="0"
+                        max="14"
+                        step="0.01"
+                        placeholder="Ej: 6.7"
+                        required
+                    >
+
+                </div>
+
             </div>
+
+            <label for="fosfatasa">
+                Fosfatasa
+            </label>
+
+            <input
+                type="text"
+                id="fosfatasa"
+                name="fosfatasa"
+                placeholder="Positiva o Negativa"
+                required
+            >
+
         </div>
+
+        <!-- ANALISIS MICROBIOLOGICO -->
 
         <div class="card">
-            <h3>Observaciones</h3>
-            <textarea name="observaciones"></textarea>
+
+            <h3>
+                Análisis microbiológico
+            </h3>
+
+            <div class="micro">
+
+                <label for="coliformes">
+                    Coliformes
+                </label>
+
+                <input
+                    type="checkbox"
+                    id="coliformes"
+                    name="coliformes"
+                    value="1"
+                >
+
+                <label for="mesofilos">
+                    Mesófilos aerobios
+                </label>
+
+                <input
+                    type="checkbox"
+                    id="mesofilos"
+                    name="mesofilos"
+                    value="1"
+                >
+
+                <label for="salmonella">
+                    Salmonella
+                </label>
+
+                <input
+                    type="checkbox"
+                    id="salmonella"
+                    name="salmonella"
+                    value="1"
+                >
+
+            </div>
+
         </div>
 
-        <button type="submit" class="btn-registro">Registrar muestra</button>
+        <!-- OBSERVACIONES -->
+
+        <div class="card">
+
+            <h3>
+                Observaciones
+            </h3>
+
+            <textarea
+                name="observaciones"
+                placeholder="Ingrese observaciones..."
+            ></textarea>
+
+        </div>
+
+        <!-- CALCULADORA ACKERMAN -->
+
+        <div class="card">
+
+            <h3>
+                Herramientas
+            </h3>
+
+            <a href="../Html/ackermann.html"
+               class="btn-ackerman">
+
+                 Ver calculadora Ackerman
+
+            </a>
+
+        </div>
+
+        <!-- BOTON -->
+
+        <button type="submit"
+                class="btn-registro">
+
+            Registrar muestra
+
+        </button>
 
     </form>
 
-    
+</section>
 
 <script>
+
 function toggleMenu(){
-  document.getElementById("menuDropdown").classList.toggle("activo");
+
+    document
+    .getElementById("menuDropdown")
+    .classList
+    .toggle("activo");
 }
+
 </script>
 
 </body>
+
 </html>

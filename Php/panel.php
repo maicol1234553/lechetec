@@ -1,191 +1,129 @@
 <?php
 session_start();
 
+/* VALIDAR SESIÓN */
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
-?>
 
+/* EVITAR CACHÉ */
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Panel - Agro Data</title>
-
     <link rel="stylesheet" href="../Css/panel.css" />
-
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
 
 <div class="layout">
 
-    <!-- 🔹 LADO IZQUIERDO -->
     <div class="lado-imagen">
-
         <img src="../Img/imagen2.jpg" alt="Imagen lateral">
 
-        <!-- TEXTO SOBRE IMAGEN -->
         <div class="usuario-overlay">
-
             <h1>
-                Bienvenido,
+                Bienvenido, 
                 <?php echo htmlspecialchars($_SESSION['usuario']); ?>
             </h1>
-
             <p>
-                <?php echo ($_SESSION['rol'] == 'admin')
-                ? 'Administrador'
-                : 'Usuario'; ?>
+                <?php echo ($_SESSION['rol'] == 'admin') ? 'Administrador' : 'Usuario'; ?>
             </p>
-
         </div>
-
     </div>
 
-    <!-- 🔹 CONTENIDO DERECHO -->
     <div class="contenido">
 
-        <!-- 🔹 HEADER -->
-        <header>
-
-            <div class="menu-container">
-
-                <!-- BOTON MENU -->
-                <div class="menu" onclick="toggleMenu()">
-                    &#9776;
-                </div>
-
-                <!-- MENU DESPLEGABLE -->
-                <div class="dropdown" id="menuDropdown">
-
-                    <a href="quienes_somos.php">
-                        ¿Quiénes somos?
-                    </a>
-
-                    <a href="para_quien.php">
-                        ¿Para quién va dirigido?
-                    </a>
-
-                </div>
-
-            </div>
-
-        </header>
-
-        <!-- 🔹 PANEL PRINCIPAL -->
         <section class="principal">
-
             <div class="card">
 
-                <!-- HEADER PANEL -->
                 <div class="titulo-panel">
-
                     <div class="header-panel">
-
-                        <!-- ESCUDO -->
-                        <img 
-                        src="../Img/escudo_tecnologico-removebg-preview.png"
-                        class="logo-panel"
-                        alt="Escudo">
-
-                        <!-- TEXTO -->
+                        <img src="../Img/escudo_tecnologico-removebg-preview.png" class="logo-panel" alt="Escudo">
+                        
                         <div>
-
                             <h2>Panel principal</h2>
-
-                            <p>
-                                Gestiona la información y registros del sistema
-                            </p>
-
+                            <p>Gestiona la información y registros del sistema</p>
                         </div>
-
                     </div>
-
                 </div>
 
-                <!-- 🔹 BOTONES -->
                 <nav class="opciones-panel">
 
                     <a href="../Html/menu.html" class="boton-panel">
-
-                        <span>📋 Registrar análisis</span>
-
-                        <span>›</span>
-
+                        <div class="contenedor-icono-texto">
+                            <i data-lucide="test-tube-2" class="icono-menu"></i>
+                            <span>Registrar análisis</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="icono-flecha"></i>
                     </a>
 
                     <a href="ver_usuarios.php" class="boton-panel">
-
-                        <span>📁 Ver registros</span>
-
-                        <span>›</span>
-
+                        <div class="contenedor-icono-texto">
+                            <i data-lucide="folder-open" class="icono-menu"></i>
+                            <span>Ver registros</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="icono-flecha"></i>
                     </a>
 
                     <?php if ($_SESSION['rol'] == 'admin'): ?>
 
-                    <a href="registro_usuario.php" class="boton-panel">
+                        <a href="registro_usuario.php" class="boton-panel">
+                            <div class="contenedor-icono-texto">
+                                <i data-lucide="user-plus" class="icono-menu"></i>
+                                <span>Registrar usuarios</span>
+                            </div>
+                            <i data-lucide="chevron-right" class="icono-flecha"></i>
+                        </a>
 
-                        <span>👤 Registrar usuarios</span>
-
-                        <span>›</span>
-
-                    </a>
-
-                    <a href="../Html/reportes.html" class="boton-panel">
-
-                        <span>📊 Reportes e informes</span>
-
-                        <span>›</span>
-
-                    </a>
+                        <a href="../Html/reportes.html" class="boton-panel">
+                            <div class="contenedor-icono-texto">
+                                <i data-lucide="file-bar-chart-2" class="icono-menu"></i>
+                                <span>Reportes e informes</span>
+                            </div>
+                            <i data-lucide="chevron-right" class="icono-flecha"></i>
+                        </a>
 
                     <?php endif; ?>
 
-                </nav>
+                </</nav>
 
             </div>
-
         </section>
 
     </div>
 
 </div>
 
-<!-- 🔹 JAVASCRIPT -->
 <script>
+    // Inicialización de los íconos vectoriales SVG
+    lucide.createIcons();
 
-function toggleMenu() {
-
-    const menu = document.getElementById("menuDropdown");
-
-    menu.classList.toggle("active");
-}
-
-/* CERRAR MENU SI SE DA CLICK AFUERA */
-document.addEventListener("click", function(e) {
-
-    const menu = document.getElementById("menuDropdown");
-
-    const boton = document.querySelector(".menu");
-
-    if (
-        !boton.contains(e.target) &&
-        !menu.contains(e.target)
-    ) {
-        menu.classList.remove("active");
+    // Gestión del estado del menú desplegable
+    function toggleMenu() {
+        const menu = document.getElementById("menuDropdown");
+        menu.classList.toggle("active");
     }
 
-});
+    // Cierre adaptativo del menú al interactuar fuera del elemento
+    document.addEventListener("click", function(e) {
+        const menu = document.getElementById("menuDropdown");
+        const boton = document.querySelector(".menu");
 
-</script>
+        if (menu && boton && !boton.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.remove("active");
+        }
+    </script>
 
 </body>
 </html>

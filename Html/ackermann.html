@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Instrumento de Ackermann - TecNM Campus Roque</title>
+<link rel="stylesheet" href="../Css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <p class="inst-name">Tecnológico Nacional de México &mdash; Campus Roque</p>
+    <h1>Instrumento de Ackermann</h1>
+    <p class="subtitle">Cálculo de Sólidos en Productos Lácteos</p>
+  </header>
+
+  <!-- DISCO -->
+  <div class="disc-wrapper">
+    <svg id="ackermann-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="gFace" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#f7f9fd"/>
+          <stop offset="100%" stop-color="#e2ecf8"/>
+        </radialGradient>
+        <filter id="fSh">
+          <feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="rgba(26,57,107,.22)"/>
+        </filter>
+      </defs>
+
+      <!-- Aro exterior azul -->
+      <circle cx="200" cy="200" r="196" fill="#1A396B" filter="url(#fSh)"/>
+      <!-- Bisel interior más claro -->
+      <circle cx="200" cy="200" r="188" fill="#2a4f8a"/>
+      <!-- Cara blanca del disco -->
+      <circle cx="200" cy="200" r="182" fill="url(#gFace)"/>
+
+      <!-- Texto arco TecNM -->
+      <path id="arcTop" d="M 46,200 A 154,154 0 0,1 354,200" fill="none"/>
+      <text font-size="7.5" fill="#1A396B" font-family="'Inter',sans-serif"
+            font-weight="600" letter-spacing="2" opacity=".65">
+        <textPath href="#arcTop" start-offset="14%">
+          TECNOLÓGICO NACIONAL DE MÉXICO · CAMPUS ROQUE
+        </textPath>
+      </text>
+
+      <!-- Escala densidad -->
+      <g id="g-density-scale"></g>
+
+      <!-- Separador de anillos -->
+      <circle cx="200" cy="200" r="120" fill="#dce8f7" stroke="#1A396B" stroke-width="1" opacity=".5"/>
+
+      <!-- Escala grasa -->
+      <g id="g-fat-scale"></g>
+
+      <!-- Zona central blanca -->
+      <circle cx="200" cy="200" r="68" fill="white" stroke="#1A396B" stroke-width="1.2" opacity=".9"/>
+
+      <!-- Barra EST -->
+      <rect x="164" y="186" width="72" height="11" rx="2.5" fill="#dce8f7"/>
+      <rect id="bar-est" x="164" y="186" width="0"  height="11" rx="2.5" fill="#1A396B"/>
+      <text id="lbl-est" x="200" y="194" text-anchor="middle" dominant-baseline="central"
+            font-size="6.5" fill="white" font-family="'Roboto Mono',monospace">EST: —</text>
+
+      <!-- Barra ESD -->
+      <rect x="164" y="202" width="72" height="11" rx="2.5" fill="#dce8f7"/>
+      <rect id="bar-esd" x="164" y="202" width="0"  height="11" rx="2.5" fill="#2a5299"/>
+      <text id="lbl-esd" x="200" y="210" text-anchor="middle" dominant-baseline="central"
+            font-size="6.5" fill="white" font-family="'Roboto Mono',monospace">ESD: —</text>
+
+      <!-- Pivote -->
+      <circle cx="200" cy="200" r="8" fill="#1A396B"/>
+      <circle cx="200" cy="200" r="3.5" fill="white"/>
+
+      <!-- Aguja densidad (azul) -->
+      <g id="needle-density"
+         style="transform-origin:200px 200px; transform:rotate(-90deg);
+                transition:transform .7s cubic-bezier(.25,.8,.25,1)">
+        <polygon points="200,-4 197.5,170 200,176 202.5,170" fill="#1A396B"/>
+        <ellipse cx="200" cy="-9" rx="4.5" ry="6.5" fill="#1A396B"/>
+      </g>
+
+      <!-- Aguja grasa (naranja) -->
+      <g id="needle-fat"
+         style="transform-origin:200px 200px; transform:rotate(-90deg);
+                transition:transform .7s cubic-bezier(.25,.8,.25,1)">
+        <polygon points="200,-2 198.2,116 200,122 201.8,116" fill="#e05a10"/>
+        <ellipse cx="200" cy="-6" rx="3.5" ry="5" fill="#e05a10"/>
+      </g>
+
+      <!-- Tapa sobre pivote -->
+      <circle cx="200" cy="200" r="6" fill="#1A396B"/>
+      <circle cx="200" cy="200" r="2.5" fill="white"/>
+
+      <!-- Leyenda agujas -->
+      <rect x="82"  y="375" width="14" height="3" rx="1.5" fill="#1A396B"/>
+      <text x="100" y="378.5" font-size="8.5" fill="#1A396B"
+            font-family="'Inter',sans-serif" font-weight="600">Densidad (g/mL)</text>
+      <rect x="216" y="375" width="14" height="3" rx="1.5" fill="#e05a10"/>
+      <text x="234" y="378.5" font-size="8.5" fill="#e05a10"
+            font-family="'Inter',sans-serif" font-weight="600">Grasa (%)</text>
+    </svg>
+  </div>
+
+  <!-- CAMPOS DE ENTRADA -->
+  <div class="card">
+    <div class="card-title">Datos de la muestra</div>
+    <div class="inputs-grid">
+
+      <div class="field">
+        <label for="inp-density">Densidad de la muestra</label>
+        <div class="input-wrap">
+          <input type="number" id="inp-density" value="1.030"
+                 min="1.015" max="1.050" step="0.001"/>
+          <span class="unit-tag">g/mL</span>
+        </div>
+        <input type="range" id="sl-density" min="1.015" max="1.050"
+               step="0.001" value="1.030"/>
+        <p class="helper">Rango normal: 1.028 - 1.034 g/mL</p>
+        <p class="err-msg" id="err-density"></p>
+      </div>
+
+      <div class="field">
+        <label for="inp-fat">Porcentaje de grasa</label>
+        <div class="input-wrap">
+          <input type="number" id="inp-fat" value="3.5"
+                 min="0.1" max="10.0" step="0.1"/>
+          <span class="unit-tag">%</span>
+        </div>
+        <input type="range" id="sl-fat" min="0.1" max="10.0"
+               step="0.1" value="3.5"/>
+        <p class="helper">Rango normal: 3.0 - 4.5 %</p>
+        <p class="err-msg" id="err-fat"></p>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-calc" id="btn-calc">Calcular</button>
+      <button class="btn-clear" id="btn-clear">Limpiar</button>
+    </div>
+  </div>
+
+  <!-- RESULTADOS -->
+  <div class="results-grid" id="results-grid">
+    <div class="res-card">
+      <div class="res-label">Extracto Seco Total</div>
+      <div class="res-val" id="val-est">—<span class="res-unit">%</span></div>
+      <div class="range-bar-wrap">
+        <div class="range-bar" id="bar-qr-est"></div>
+      </div>
+      <div class="range-limits"><span>11.5</span><span>13.5</span></div>
+      <div class="range-status" id="status-est"></div>
+    </div>
+    <div class="res-card">
+      <div class="res-label">Extracto Seco Desengrasado</div>
+      <div class="res-val" id="val-esd">—<span class="res-unit">%</span></div>
+      <div class="range-bar-wrap">
+        <div class="range-bar" id="bar-qr-esd"></div>
+      </div>
+      <div class="range-limits"><span>8.5</span><span>9.5</span></div>
+      <div class="range-status" id="status-esd"></div>
+    </div>
+  </div>
+
+  <!-- INTERPRETACIÓN -->
+  <div class="interp" id="interp-box">
+    <div class="interp-title">Interpretación</div>
+    <div id="interp-text"></div>
+  </div>
+
+  <!-- DESCRIPCIONES -->
+  <div class="card">
+    <div class="card-title">¿Qué mide cada indicador?</div>
+    <div class="desc-cards">
+      <div class="desc-card">
+        <div class="desc-acronym">EST</div>
+        <div class="desc-full">Extracto Seco Total</div>
+        <p>
+          Es el porcentaje de <strong>todos los componentes sólidos</strong>
+          presentes en la leche: proteínas, grasas, lactosa (el azúcar natural
+          de la leche) y minerales. Representa todo lo que queda si se
+          elimina completamente el agua de la muestra.
+        </p>
+        <p style="margin-top:9px">
+          Un valor bajo puede indicar que la leche fue
+          <strong>diluida con agua</strong>; un valor alto puede reflejar
+          concentración o un estado avanzado de lactación.
+        </p>
+        <span class="normal-badge">Normal: 11.5 - 13.5 %</span>
+      </div>
+      <div class="desc-card">
+        <div class="desc-acronym">ESD</div>
+        <div class="desc-full">Extracto Seco Desengrasado</div>
+        <p>
+          Son los sólidos totales <strong>sin contar la grasa</strong>:
+          proteínas, lactosa y sales minerales. Es el indicador
+          <strong>más confiable para detectar adulteración</strong>, ya que
+          el contenido de grasa puede variar naturalmente entre razas y
+          etapas de lactación, mientras que el ESD es relativamente estable.
+        </p>
+        <p style="margin-top:9px">
+          Un ESD por debajo del mínimo es señal clara de aguado de la leche.
+        </p>
+        <span class="normal-badge">Normal: 8.5 - 9.5 %</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA DE REFERENCIA -->
+  <div class="card" style="padding:0; overflow:hidden;">
+    <div class="card-title"
+         style="padding:22px 24px 16px; border-radius:0; margin:0;
+                border-bottom:1px solid var(--blue-pale);">
+      Tabla de referencia &mdash; Leche de vaca (NOM-155-SCFI-2012)
+    </div>
+    <div class="table-wrap" style="border-radius:0;">
+      <table>
+        <thead>
+          <tr>
+            <th>Parámetro</th><th>Mínimo</th><th>Máximo</th>
+            <th>Unidad</th><th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Densidad</td>
+            <td class="num">1.028</td><td class="num">1.034</td>
+            <td class="unit">g/mL</td>
+            <td class="desc">Masa por unidad de volumen a 15 °C</td>
+          </tr>
+          <tr>
+            <td>Grasa</td>
+            <td class="num">3.0</td><td class="num">4.5</td>
+            <td class="unit">%</td>
+            <td class="desc">Contenido de materia grasa láctea</td>
+          </tr>
+          <tr>
+            <td>Extracto Seco Total (EST)</td>
+            <td class="num">11.5</td><td class="num">13.5</td>
+            <td class="unit">%</td>
+            <td class="desc">Todos los sólidos presentes en la leche</td>
+          </tr>
+          <tr>
+            <td>Extracto Seco Desengrasado (ESD)</td>
+            <td class="num">8.5</td><td class="num">9.5</td>
+            <td class="unit">%</td>
+            <td class="desc">Sólidos totales excluyendo la grasa</td>
+          </tr>
+          <tr>
+            <td>Proteínas</td>
+            <td class="num">2.8</td><td class="num">3.8</td>
+            <td class="unit">%</td>
+            <td class="desc">Caseínas y proteínas del suero</td>
+          </tr>
+          <tr>
+            <td>Lactosa</td>
+            <td class="num">4.4</td><td class="num">5.2</td>
+            <td class="unit">%</td>
+            <td class="desc">Azúcar natural de la leche</td>
+          </tr>
+          <tr>
+            <td>Cenizas (minerales)</td>
+            <td class="num">0.65</td><td class="num">0.80</td>
+            <td class="unit">%</td>
+            <td class="desc">Sales minerales totales (Ca, K, Na, P…)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    Tecnológico Nacional de México · Campus Roque<br>
+    Instrumento de Ackermann · Análisis de Productos Lácteos · v2.1<br>
+    Referencia: Fórmula de Ackermann · NOM-155-SCFI-2012
+  </footer>
+</div>
+<script src="../Php/scripts.js"></script>
+</body>
+</html>

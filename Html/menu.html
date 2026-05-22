@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
 <meta charset="UTF-8">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -10,6 +11,32 @@
 
 <link rel="stylesheet" href="../Css/estilos.css">
 <link rel="stylesheet" href="../Css/menu.css">
+
+<style>
+
+.btn-volver{
+
+display: inline-block;
+margin: 15px;
+padding: 10px 20px;
+background: #2e7d32;
+color: white;
+text-decoration: none;
+border-radius: 10px;
+font-family: 'Poppins', sans-serif;
+font-weight: 500;
+transition: 0.3s;
+
+}
+
+.btn-volver:hover{
+
+background: #1b5e20;
+transform: scale(1.05);
+
+}
+
+</style>
 
 </head>
 
@@ -22,18 +49,21 @@
 <div class="menu" onclick="toggleMenu()">&#9776;</div>
 
 <div class="dropdown" id="menuDropdown">
-<a href="index.html">Inicio</a>
+
 <a href="menu.html">Módulos</a>
 <a href="lechetec.html">Registro Leche</a>
 <a href="reportes.html">Reportes e Informes</a>
+<a href="index.html">Salir</a>
+
 </div>
 
 </div>
+
+<a href="javascript:history.back()" class="btn-volver">← Volver</a>
 
 </header>
 
 <section class="modulos">
-
 
 <h1>Módulos del sistema</h1>
 
@@ -71,9 +101,9 @@
 
 <a href="verduras.html" class="modulo verduras">
 
-<h1>🥛</h1>
+<h1>🥬</h1>
 
-<h2>verduras</h2>
+<h2>Verduras</h2>
 
 <p>Análisis de calidad</p>
 
@@ -82,29 +112,39 @@
 </div>
 
 </section>
+
 <!-- SECCION INFORMACION -->
 
 <section class="informacion">
 
 <div class="info-card">
-<h3>🔒 Información Segura</h3>
+
+<h3>Información Segura</h3>
+
 <p>
 Protegemos todos los registros y análisis realizados dentro del sistema.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>📊 Reportes Precisos</h3>
+
+<h3>Reportes Precisos</h3>
+
 <p>
 Generación de reportes e informes detallados para el control de calidad.
 </p>
+
 </div>
 
 <div class="info-card">
-<h3>⚡ Procesamiento Rápido</h3>
+
+<h3>Procesamiento Rápido</h3>
+
 <p>
 El sistema permite registrar y consultar información de manera eficiente.
 </p>
+
 </div>
 
 </section>

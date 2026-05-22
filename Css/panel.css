@@ -145,35 +145,6 @@ header{
     z-index:99999;
 }
 
-/* BOTON MENU */
-.menu{
-    width:55px;
-    height:55px;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    font-size:28px;
-
-    background:white;
-
-    border-radius:18px;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,0.08);
-
-    transition:0.3s;
-}
-
-.menu:hover{
-    transform:scale(1.08);
-
-    background:#ffffff;
-}
 
 /* ========================= */
 /* MENU DROPDOWN */

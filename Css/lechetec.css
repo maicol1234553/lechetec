@@ -1,85 +1,283 @@
-.contenedor-leche{
-margin-top:5px;
-display:flex;
-flex-direction:column;
-align-items:center;
+/* =========================
+   BODY
+========================= */
+
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    background:#f4f7fb;
 }
+
+/* =========================
+   CONTENEDOR GENERAL
+========================= */
+
+.contenedor-leche{
+    width:100%;
+    min-height:100vh;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    box-sizing:border-box;
+}
+
+/* =========================
+   TITULO
+========================= */
 
 .titulo-leche{
-background:#1A396B;
-color:white;
-padding:10px 30px;
-border-radius:10px;
-margin-bottom:30px;
+    background:linear-gradient(90deg,#123a73,#1f5db3);
+    color:white;
+    padding:18px 50px;
+    border-radius:15px;
+    font-size:40px;
+    font-weight:bold;
+    margin-bottom:35px;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.20);
+    text-align:center;
 }
 
+/* =========================
+   GRID PRINCIPAL
+========================= */
 
 .grid-leche{
-display:grid;
-grid-template-columns: 350px 450px;
-gap:30px;
+    display:grid;
+    grid-template-columns:420px 520px;
+    gap:35px;
+    justify-content:center;
 }
+
+/* =========================
+   TARJETAS
+========================= */
 
 .card{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0px 8px 20px rgba(0,0,0,0.25);
-text-align:left;
+    position:relative;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    border:2px solid #67c1ff;
+    box-shadow:
+        0px 10px 25px rgba(0,0,0,0.12),
+        inset 0px 0px 10px rgba(103,193,255,0.15);
+    overflow:hidden;
 }
+
+/* LINEA SUPERIOR */
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:10px;
+    background:linear-gradient(90deg,#0057c2,#3ba9ff);
+}
+
+/* =========================
+   TITULOS
+========================= */
+
+.card h3{
+    color:#1c4c7c;
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+/* =========================
+   LABELS
+========================= */
 
 .card label{
-margin-top:10px;
-display:block;
+    display:block;
+    margin-top:15px;
+    margin-bottom:8px;
+    color:#2c587d;
+    font-size:18px;
+    font-weight:600;
 }
 
-.grid-analisis{
-display:grid;
-grid-template-columns:1fr 1fr;
-column-gap:40px;
-row-gap:18px;
-margin-top:10px;
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:2px solid #93d8ff;
+    background:white;
+    font-size:16px;
+    transition:0.3s;
+    box-sizing:border-box;
+    box-shadow:0px 3px 10px rgba(0,0,0,0.08);
 }
 
-input, textarea{
-width:100%;
-padding:8px;
-margin-top:5px;
-margin-bottom:10px;
-border-radius:6px;
-border:1px solid #ccc;
+/* EFECTO FOCUS */
+
+input:focus,
+textarea:focus{
+    outline:none;
+    border:2px solid #0b72d4;
+    box-shadow:0px 0px 12px rgba(11,114,212,0.35);
+    transform:scale(1.01);
 }
+
+/* TEXTAREA */
 
 textarea{
-height:80px;
+    min-height:140px;
+    resize:none;
 }
 
-input:focus{
-outline:none;
-border:1px solid #c99a2e;
-box-shadow:0 0 6px rgba(201,154,46,0.5);
+/* =========================
+   GRID ANALISIS
+========================= */
+
+.grid-analisis{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
 }
+
+/* =========================
+   MICROBIOLOGICO
+========================= */
 
 .micro{
-display:grid;
-grid-template-columns:1fr 50px;
-gap:10px;
+    display:grid;
+    grid-template-columns:1fr 50px;
+    gap:15px;
+    align-items:center;
 }
 
+.micro input[type="checkbox"]{
+    width:25px;
+    height:25px;
+    cursor:pointer;
+}
+
+/* =========================
+   BOTON
+========================= */
+
 .btn-registro{
-grid-column:1 / -1;
-justify-self:center;
-padding:22px 40px;
-background:#1A396B;
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
-font-size:26px;
-transition:0.3s;
+    grid-column:1 / -1;
+    justify-self:center;
+
+    padding:20px 50px;
+    margin-top:10px;
+
+    border:none;
+    border-radius:15px;
+
+    background:linear-gradient(90deg,#103d79,#1f66c5);
+    color:white;
+
+    font-size:24px;
+    font-weight:bold;
+
+    cursor:pointer;
+    transition:0.3s;
+
+    box-shadow:0px 8px 18px rgba(0,0,0,0.20);
 }
 
 .btn-registro:hover{
-color:#c99a2e;
+    background:linear-gradient(90deg,#1a4f96,#2b79e4);
+    color:#ffd86a;
+    transform:translateY(-3px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .grid-leche{
+        grid-template-columns:1fr;
+    }
+
+    .titulo-leche{
+        font-size:28px;
+        padding:15px 25px;
+    }
+
+    .card h3{
+        font-size:24px;
+    }
+
+    .card label{
+        font-size:16px;
+    }
+
+}
+/* =========================
+   CALCULADORA ACKERMAN
+========================= */
+
+.btn-ackerman{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    width:80%;
+
+    margin:30px auto 10px auto;
+
+    padding:15px 20px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #1a4f96,
+        #42a5f5
+    );
+
+    box-shadow:
+        0px 8px 18px rgba(0,0,0,0.18);
+
+    transition:0.3s;
+}
+
+/* HOVER */
+
+.btn-ackerman:hover{
+
+    transform:translateY(-3px);
+
+    background:
+    linear-gradient(
+        135deg,
+        #2363bb,
+        #64b5f6
+    );
+
+    box-shadow:
+        0px 12px 22px rgba(0,0,0,0.22);
+}
+.card:last-child{
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
 }
