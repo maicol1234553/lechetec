@@ -8,8 +8,8 @@ if (!isset($_SESSION['usuario'])) {
 
 include("conexion.php");
 
-// 🔥 IMPORTANTE
-$id_usuario = $_SESSION['id']; // 👈 AQUÍ TOMAS EL ID
+//  IMPORTANTE
+$id_usuario = $_SESSION['id']; //  AQUÍ TOMAS EL ID
 
 // 1. Datos generales
 $origen      = $_POST['origen'] ?? '';
@@ -38,7 +38,7 @@ $salmonella = isset($_POST['salmonella']) ? 1 : 0;
 $observaciones = $_POST['observaciones'] ?? '';
 $ufc_mic = 0;
 
-// 🔥 1️⃣ INSERTAR MUESTRA (CORREGIDO)
+//  INSERTAR MUESTRA (CORREGIDO)
 $sql_muestra = "INSERT INTO MUESTRA 
 (FEC_MUE, HOR_MUE, ORI_MUE, RES_MUE, id_usuario) 
 VALUES 
@@ -48,7 +48,7 @@ if ($conn->query($sql_muestra) === TRUE) {
 
     $id_generado = $conn->insert_id;
 
-    // 🔥 2️⃣ FQ
+    //  FQ
     $sql_fq = "INSERT INTO ANALISIS_FQ 
     (ID_MUE, ACI_AFQ, DEN_AFQ, GRA_AFQ, PH_AFQ, ALC_AFQ, PRO_AFQ, FOS_AFQ) 
     VALUES 
@@ -58,7 +58,7 @@ if ($conn->query($sql_muestra) === TRUE) {
         echo "Error FQ: " . $conn->error;
     }
 
-    // 🔥 3️⃣ MICRO
+    //  MICRO
     $sql_micro = "INSERT INTO ANALISIS_MICRO 
     (ID_MUE, UFC_MIC, COL_MIC, MES_MIC, SAL_MIC, OBS_MIC) 
     VALUES 
@@ -68,7 +68,7 @@ if ($conn->query($sql_muestra) === TRUE) {
         echo "Error MICRO: " . $conn->error;
     }
 
-    // ✅ OK
+    // OK
     echo "<script>
             alert('¡Registro guardado correctamente!');
             window.location.href='../Html/lechetec.html';
