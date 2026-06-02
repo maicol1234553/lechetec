@@ -73,3 +73,19 @@ h2 {
     25% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
 }
+.recuperar-password{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.recuperar-password a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recuperar-password a:hover{
+    text-decoration: underline;
+    color: #ffffff;
+}

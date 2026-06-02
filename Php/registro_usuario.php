@@ -12,20 +12,22 @@ if(isset($_POST['registrar'])){
 
     $numero = $_POST['numero_control'];
 
-    $sql = "INSERT INTO usuarios 
-    (usuario,password,rol,numero_control)
+    $frase_secreta = $_POST['frase_secreta'];
+
+    $sql = "INSERT INTO usuarios
+    (usuario,password,rol,numero_control,frase_secreta)
 
     VALUES
 
-    ('$usuario','$password','$rol','$numero')";
+    ('$usuario','$password','$rol','$numero','$frase_secreta')";
 
     if($conn->query($sql)){
 
-        echo "Usuario registrado";
+        echo "Usuario registrado correctamente";
 
     }else{
 
-        echo "Error";
+        echo "Error: " . $conn->error;
     }
 
 }
@@ -65,6 +67,12 @@ required>
 <input type="password"
 name="password"
 placeholder="Contraseña"
+required>
+
+<input
+type="text"
+name="frase_secreta"
+placeholder="Frase secreta"
 required>
 
 <select name="rol">

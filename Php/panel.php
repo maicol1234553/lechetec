@@ -67,14 +67,16 @@ header("Expires: 0");
                         </div>
                         <i data-lucide="chevron-right" class="icono-flecha"></i>
                     </a>
+                     <a href="../Html/reportes.html" class="boton-panel">
+                            <div class="contenedor-icono-texto">
+                                <i data-lucide="file-bar-chart-2" class="icono-menu"></i>
+                                <span>Reportes e informes</span>
+                            </div>
+                            <i data-lucide="chevron-right" class="icono-flecha"></i>
+                        </a>
+                    
 
-                    <a href="ver_usuarios.php" class="boton-panel">
-                        <div class="contenedor-icono-texto">
-                            <i data-lucide="folder-open" class="icono-menu"></i>
-                            <span>Ver registros</span>
-                        </div>
-                        <i data-lucide="chevron-right" class="icono-flecha"></i>
-                    </a>
+                    
 
                     <?php if ($_SESSION['rol'] == 'admin'): ?>
 
@@ -85,14 +87,15 @@ header("Expires: 0");
                             </div>
                             <i data-lucide="chevron-right" class="icono-flecha"></i>
                         </a>
-
-                        <a href="../Html/reportes.html" class="boton-panel">
-                            <div class="contenedor-icono-texto">
-                                <i data-lucide="file-bar-chart-2" class="icono-menu"></i>
-                                <span>Reportes e informes</span>
-                            </div>
-                            <i data-lucide="chevron-right" class="icono-flecha"></i>
+                        <a href="ver_usuarios.php" class="boton-panel">
+                        <div class="contenedor-icono-texto">
+                            <i data-lucide="folder-open" class="icono-menu"></i>
+                            <span>Ver registros</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="icono-flecha"></i>
                         </a>
+
+                        
 
                     <?php endif; ?>
 

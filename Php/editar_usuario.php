@@ -2,7 +2,7 @@
 
 include("conexion.php");
 
-$id = $_GET['id'];
+$id = (int) $_GET['id'];
 
 $sql = "SELECT * FROM usuarios WHERE id='$id'";
 
@@ -13,24 +13,41 @@ $fila = $resultado->fetch_assoc();
 if(isset($_POST['actualizar'])){
 
     $usuario = $_POST['usuario'];
-
     $numero = $_POST['numero_control'];
-
     $rol = $_POST['rol'];
+    $password = $_POST['password'];
 
-    $sqlUpdate = "UPDATE usuarios SET
+    // Si escribió una nueva contraseña
+    if(!empty($password)){
 
-    usuario='$usuario',
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-    numero_control='$numero',
+        $sqlUpdate = "UPDATE usuarios SET
+            usuario='$usuario',
+            numero_control='$numero',
+            rol='$rol',
+            password='$passwordHash'
+            WHERE id='$id'";
 
-    rol='$rol'
+    }else{
 
-    WHERE id='$id'";
+        // Si no escribió contraseña, no se modifica
+        $sqlUpdate = "UPDATE usuarios SET
+            usuario='$usuario',
+            numero_control='$numero',
+            rol='$rol'
+            WHERE id='$id'";
+    }
 
     if($conn->query($sqlUpdate)){
 
         header("Location: ver_usuarios.php");
+        exit();
+
+    }else{
+
+        echo "Error al actualizar: " . $conn->error;
+
     }
 }
 ?>
@@ -40,11 +57,11 @@ if(isset($_POST['actualizar'])){
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<title>Editar Usuario</title>
+    <title>Editar Usuario</title>
 
-<link rel="stylesheet" href="../Css/usuarios.css">
+    <link rel="stylesheet" href="../Css/usuarios.css">
 
 </head>
 
@@ -52,42 +69,50 @@ if(isset($_POST['actualizar'])){
 
 <div class="contenedor">
 
-<h1>Editar Usuario</h1>
+    <h1>Editar Usuario</h1>
 
-<form method="POST">
+    <form method="POST">
 
-<input type="text"
-name="usuario"
-value="<?php echo $fila['usuario']; ?>">
+        <input
+            type="text"
+            name="usuario"
+            value="<?php echo $fila['usuario']; ?>"
+            required>
 
-<input type="text"
-name="numero_control"
-value="<?php echo $fila['numero_control']; ?>">
+        <input
+            type="text"
+            name="numero_control"
+            value="<?php echo $fila['numero_control']; ?>"
+            required>
 
-<select name="rol">
+        <select name="rol" required>
 
-<option value="usuario">
+            <option value="usuario"
+                <?php if($fila['rol'] == 'usuario') echo 'selected'; ?>>
+                Usuario
+            </option>
 
-Usuario
+            <option value="admin"
+                <?php if($fila['rol'] == 'admin') echo 'selected'; ?>>
+                Administrador
+            </option>
 
-</option>
+        </select>
 
-<option value="admin">
+        <input
+            type="password"
+            name="password"
+            placeholder="Nueva contraseña (opcional)">
 
-Administrador
+        <button
+            type="submit"
+            name="actualizar">
 
-</option>
+            Actualizar
 
-</select>
+        </button>
 
-<button type="submit"
-name="actualizar">
-
-Actualizar
-
-</button>
-
-</form>
+    </form>
 
 </div>
 
