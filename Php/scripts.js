@@ -198,6 +198,31 @@
     document.getElementById('inp-fat').classList.toggle('err',     !!e.fat);
   }
 
+  /* ── Tabla de referencia — columna "Resultado obtenido" ── */
+  function setTblResult(id, value, min, max, decimals) {
+    const cell = document.getElementById(id);
+    if (!cell) return;
+    cell.textContent = value.toFixed(decimals);
+    cell.classList.remove('tbl-result-ok', 'tbl-result-low', 'tbl-result-high');
+    if (value < min)       cell.classList.add('tbl-result-low');
+    else if (value > max)  cell.classList.add('tbl-result-high');
+    else                   cell.classList.add('tbl-result-ok');
+  }
+  function updateTableResults(d, g, est, esd) {
+    setTblResult('tbl-res-density', d,   1.028, 1.034, 3);
+    setTblResult('tbl-res-fat',     g,   3.0,   4.5,   1);
+    setTblResult('tbl-res-est',     est, 11.5,  13.5,  2);
+    setTblResult('tbl-res-esd',     esd, 8.5,   9.5,   2);
+  }
+  function clearTableResults() {
+    ['tbl-res-density','tbl-res-fat','tbl-res-est','tbl-res-esd'].forEach(id => {
+      const cell = document.getElementById(id);
+      if (!cell) return;
+      cell.textContent = '—';
+      cell.classList.remove('tbl-result-ok', 'tbl-result-low', 'tbl-result-high');
+    });
+  }
+
   /* ── Calcular ──────────────────────────────────────────── */
   function calculate() {
     const d = parseFloat(document.getElementById('inp-density').value);
@@ -210,6 +235,7 @@
     updateDiscBars(EST, ESD);
     updateCards(EST, ESD);
     updateInterp(EST, ESD);
+    updateTableResults(d, g, EST, ESD);
   }
 
   /* ── Sliders ↔ Inputs ──────────────────────────────────── */
@@ -243,6 +269,7 @@
     document.getElementById('lbl-esd').textContent = 'ESD: —';
     document.getElementById('results-grid').classList.remove('visible');
     document.getElementById('interp-box').classList.remove('visible');
+    clearTableResults();
   }
 
   /* ── Init ──────────────────────────────────────────────── */

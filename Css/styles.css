@@ -250,6 +250,14 @@
   td.num  { color: var(--blue-mid); }
   td.unit { color: var(--text-muted); }
   td.desc { font-family: 'Inter', sans-serif; font-size: 12px; color: #4a6888; }
+  td.tbl-result {
+    font-weight: 600; font-size: 13px; text-align: center;
+    transition: color .3s, background .3s;
+  }
+  td.tbl-result-ok   { color: var(--green); background: var(--green-bg); }
+  td.tbl-result-low  { color: var(--red);   background: var(--red-bg);   }
+  td.tbl-result-high { color: var(--amber); background: var(--amber-bg); }
+  td.tbl-result-na   { color: var(--text-muted); font-style: italic; font-size: 11px; text-align: center; }
 
   /* ── FOOTER ── */
   footer {
